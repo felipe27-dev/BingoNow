@@ -1,0 +1,894 @@
+/* =========================
+   Variáveis de Tema
+   ========================= */
+:root {
+  --primaria: #155f9b;
+  --primaria-escura: #0d3e66;
+  --acento: #fc7a0d;
+  --acento-escuro: #c85e00;
+  --fundo: #f0f4fa;
+  --branco: #fff;
+  --sombra: 0 4px 16px rgba(21,95,155,0.08);
+  --perigo: #e53935;
+
+  /* English aliases for theme (for new components) */
+  --primary: #155f9b;
+  --primary-dark: #0d3e66;
+  --accent: #fc7a0d;
+  --accent-dark: #c85e00;
+  --bg: #f0f4fa;
+  --white: #fff;
+  --shadow: 0 4px 16px rgba(21,95,155,0.08);
+  --danger: #e53935;
+
+  /* Confetti */
+  --confetti1: #fc7a0d;
+  --confetti2: #155f9b;
+  --confetti3: #e53935;
+  --confetti4: #ffd700;
+  --confetti5: #43a047;
+}
+
+/* =========================
+   Reset e Box Sizing
+   ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Estrutura Global
+   ========================= */
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--fundo);
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0;
+  animation: fadeInBody 1s;
+}
+
+/* =========================
+   Cabeçalhos
+   ========================= */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+h1 {
+  margin: 2rem 0 1rem;
+  font-size: 2.2rem;
+  color: var(--primaria);
+  letter-spacing: 2px;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(21,95,155,0.08);
+  animation: slideDown 0.8s;
+}
+h2 {
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeIn 1s;
+}
+
+/* =========================
+   Botões
+   ========================= */
+.botao {
+  padding: 14px 32px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(21,95,155,0.10);
+  transition: background .2s, transform .1s;
+}
+.botao-primario {
+  background: var(--primaria);
+  color: var(--branco);
+}
+.botao-primario:hover {
+  background: var(--acento);
+  transform: scale(1.03);
+}
+.botao-acento {
+  background: var(--acento);
+  color: var(--branco);
+}
+.botao-acento:hover {
+  background: var(--acento-escuro);
+}
+.botao-perigo {
+  background: var(--perigo);
+  color: var(--branco);
+}
+.botao-perigo:hover {
+  background: #b71c1c;
+}
+
+/* =========================
+   Layout de Containers
+   ========================= */
+.container-form,
+.form-container {
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--sombra);
+  border-top: 6px solid var(--acento);
+  border-bottom: 2px solid var(--primaria);
+  position: relative;
+  animation: fadeInUp 1s;
+}
+.form-container {
+  padding: 32px 28px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form-container input {
+  padding: 14px;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  transition: border .2s;
+  outline: none;
+  background: #f8fafc;
+  animation: fadeIn 1.2s;
+}
+.form-container input:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+.form-container button {
+  font-weight: bold;
+  padding: 14px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(21,95,155,0.10);
+  transition: background .2s, transform .1s;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  animation: pulseBtn 1.5s infinite alternate;
+}
+.form-container button:hover {
+  background: var(--accent);
+  transform: scale(1.03);
+}
+
+/* =========================
+   Cartelas
+   ========================= */
+.container-cartelas,
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+  animation: fadeInCards 1.2s;
+}
+.cards-container {
+  gap: 20px;
+  margin-bottom: 32px;
+  padding: 0 12px;
+}
+.card {
+  background: var(--white);
+  padding: 18px 14px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow .2s, transform .1s;
+  position: relative;
+  animation: popCard 0.7s;
+  width: 100%;
+  max-width: 370px;
+  box-sizing: border-box;
+}
+.card:hover {
+  box-shadow: 0 8px 24px rgba(252,122,13,0.13);
+  transform: translateY(-2px) scale(1.02);
+  animation: none;
+}
+.card-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  text-align: center;
+  letter-spacing: 1px;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 4px 0;
+  animation: fadeIn 1s;
+}
+.card-body {
+  flex: 1;
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+  animation: fadeIn 1.2s;
+}
+.card-actions {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  animation: fadeIn 1.3s;
+}
+.card-actions a {
+  min-width: 110px;
+  height: 38px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--white);
+  font-size: 0.98rem;
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: var(--primary);
+  transition: background .2s, transform .1s;
+  box-shadow: 0 1px 4px rgba(21,95,155,0.08);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.4s;
+  white-space: nowrap;
+}
+.card-actions a:hover {
+  background: var(--accent);
+  transform: scale(1.07);
+  color: var(--white);
+}
+
+/* =========================
+   Botões de ação Cartelas
+   ========================= */
+#btn-remover-todas-cartelas,
+#btn-imprimir-todas-cartelas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.15);
+  transition: background .2s, transform .1s;
+  margin-bottom: 12px;
+}
+#btn-remover-todas-cartelas {
+  background: var(--danger);
+  color: var(--white);
+}
+#btn-remover-todas-cartelas:hover {
+  background: var(--accent-dark);
+  transform: scale(1.04);
+}
+#btn-imprimir-todas-cartelas {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* =========================
+   Modal Comprador
+   ========================= */
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-conteudo {
+  background: linear-gradient(90deg, #e3f2fd 0%, #fffbe8 100%);
+  border: 3px solid var(--primaria);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90vw;
+  color: var(--primaria-escura);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   Tabela Cartela
+   ========================= */
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+th {
+  background: #ececec;
+  font-weight: 600;
+}
+.td-livre {
+  background: #ffd54f;
+  font-weight: 700;
+}
+
+/* =========================
+   Sorteio
+   ========================= */
+.controles,
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s;
+}
+.controls {
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.controls button,
+#btn-verificar-informacoes {
+  font-size: 1.08rem;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(21,95,155,0.10);
+  transition: background .2s, transform .1s;
+  animation: pulseBtn 1.5s infinite alternate;
+  outline: none;
+}
+#btn-verificar-informacoes {
+  color: var(--white);
+}
+#btn-start { background: var(--primary); color: var(--white);}
+#btn-start:hover { background: var(--accent);}
+#btn-next { background: var(--accent); color: var(--white);}
+#btn-next:hover { background: var(--accent-dark);}
+#btn-stop { background: var(--danger); color: var(--white);}
+#btn-stop:hover { background: #b71c1c;}
+.active { opacity: 1; }
+.desactive { opacity: 0.5; pointer-events: none; }
+
+/* =========================
+   Sorteio - Número Grande
+   ========================= */
+.numero-grande,
+#last-number {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--perigo);
+  text-shadow: 0 2px 12px rgba(229,57,53,0.12);
+  background: var(--branco);
+  border-radius: 1rem;
+  box-shadow: var(--sombra);
+  padding: 1rem 0;
+  max-width: 320px;
+  margin: 0 auto 2rem;
+  display: none;
+  animation: pop 0.6s ease;
+}
+#last-number {
+  border-radius: 18px;
+  padding: 18px 0;
+  margin: 0 auto 20px;
+}
+
+/* =========================
+   Caixa Na Boa / Winner
+   ========================= */
+.caixa-na-boa,
+.na-boa-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #e3f2fd 0%, #fffbe8 100%);
+  border: 3px solid var(--primary);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(21,95,155,0.10);
+  padding: 22px 18px;
+  max-width: 420px;
+  margin: 0 auto 18px;
+  color: var(--primary-dark);
+  animation: fadeInNaBoa 1s;
+}
+.caixa-na-boa {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin: 0 auto 1.5rem;
+  color: var(--primaria-escura);
+}
+.na-boa-box h3,
+.caixa-na-boa h3 {
+  font-size: 1.3rem;
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 4px 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(252,122,13,0.08);
+}
+.na-boa-box p {
+  font-size: 1.08rem;
+  margin-top: 6px;
+  color: var(--primary-dark);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Winner Box */
+.winner-box {
+  animation: winner-flash 1s ease infinite alternate;
+  border: 4px dashed var(--accent);
+  font-size: 1.3rem;
+  padding: 22px;
+  margin-top: 18px;
+  background: #fffbe8;
+  border-radius: 16px;
+  color: var(--primary-dark);
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--shadow);
+  display: none;
+}
+
+/* =========================
+   Grupos de Bolas
+   ========================= */
+.grupos,
+.drawn-groups {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  animation: fadeInCards 1.2s;
+}
+.drawn-groups {
+  gap: 32px;
+  margin-top: 18px;
+  margin-bottom: 32px;
+}
+.grupo,
+.group {
+  background: var(--branco);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 200px;
+  box-shadow: var(--sombra);
+  text-align: center;
+  animation: pop 0.7s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.group {
+  border-radius: 14px;
+  padding: 18px 12px;
+  width: 210px;
+  box-shadow: var(--shadow);
+  animation: popCard 0.7s;
+}
+.grupo h3,
+.group h3 {
+  font-weight: bold;
+  color: var(--acento);
+  margin-bottom: 0.5rem;
+  background: var(--acento);
+  color: var(--branco);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(252,122,13,0.08);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.numeros,
+.nums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 8px;
+}
+.nums {
+  gap: 7px;
+}
+.bola,
+.ball {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primaria-escura);
+  color: var(--branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  animation: pop 0.6s;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(252,122,13,0.10);
+  transition: background .2s, transform .1s;
+}
+
+/* =========================
+   Custom Select
+   ========================= */
+.custom-select {
+  appearance: none;
+  background: linear-gradient(90deg, #e3f2fd 0%, #fffbe8 100%);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 38px 10px 16px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(21,95,155,0.08);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  min-width: 180px;
+  margin: 0 auto;
+}
+.custom-select:focus {
+  border-color: var(--accent-dark);
+  box-shadow: 0 4px 16px rgba(252,122,13,0.18);
+}
+.custom-select option {
+  background: var(--white);
+  color: var(--primary-dark);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px;
+}
+.custom-select::-ms-expand {
+  display: none;
+}
+.custom-select::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid var(--accent);
+  pointer-events: none;
+}
+
+/* =========================
+   Confetti Animation
+   ========================= */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border-radius: 4px;
+  opacity: 0.85;
+  animation: confetti-fall 2.2s cubic-bezier(.62,.04,.32,1.01) forwards;
+}
+
+/* =========================
+   Tipo de Sorteio Section
+   ========================= */
+.div-tipo-sorteio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #e3f2fd 0%, #fffbe8 100%);
+  border: 2px solid var(--primary);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(21,95,155,0.10);
+  padding: 18px 12px;
+  max-width: 560px;
+  margin: 0 auto 24px;
+  animation: fadeInTipo 1s;
+}
+.div-tipo-sorteio h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 4px 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(252,122,13,0.08);
+  animation: slideDown 0.7s;
+}
+.tipo-sorteio-options {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 8px;
+  animation: fadeInUp 0.8s;
+}
+.tipo-radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(21,95,155,0.08);
+  transition: background .2s, transform .1s;
+  border: 2px solid transparent;
+  animation: popCard 0.7s;
+}
+.tipo-radio input[type="radio"] {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  margin-right: 10px;
+  background: var(--white);
+  transition: border-color .2s;
+  position: relative;
+}
+.tipo-radio input[type="radio"]:checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.tipo-radio input[type="radio"]:checked::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--white);
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  box-shadow: 0 1px 4px rgba(252,122,13,0.10);
+}
+.tipo-radio:hover {
+  background: #e3f2fd;
+  transform: scale(1.04);
+  border-color: var(--accent);
+}
+.tipo-radio input[type="radio"]:focus {
+  outline: 2px solid var(--accent);
+}
+
+/* =========================
+   Logo
+   ========================= */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  background: whitesmoke;
+  padding: 18px 0;
+  border-radius: 0 0 24px 24px;
+  box-shadow: var(--shadow);
+  animation: fadeInLogo 1.2s;
+}
+.logo-container img {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 8px rgba(252,122,13,0.12));
+  animation: bounceIn 1.2s;
+}
+
+/* =========================
+   Botão sorteio
+   ========================= */
+.btn-draw {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.08rem;
+  transition: background .2s, transform .1s;
+  box-shadow: 0 2px 8px rgba(21,95,155,0.10);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  animation: pulseBtn 1.5s infinite alternate;
+}
+.btn-draw:hover {
+  background: var(--accent);
+  transform: scale(1.04);
+}
+
+/* =========================
+   Responsivo
+   ========================= */
+@media (max-width: 900px) {
+  .drawn-groups { gap: 18px; }
+  .group { width: 160px; padding: 12px 6px;}
+  .group h3 { font-size: 1.1rem;}
+  #last-number { font-size: 3rem; }
+}
+@media (max-width: 700px) {
+  .container-form, .container-cartelas, .form-container, .cards-container {
+    max-width: 98vw !important;
+    padding: 12px !important;
+  }
+  .botao, .btn-draw {
+    width: 100% !important;
+    font-size: 1rem !important;
+  }
+  .card {
+    padding: 10px !important;
+  }
+  .form-container input, .form-container button {
+    max-width: 100vw !important;
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .drawn-groups { flex-direction: column; align-items: center; gap: 12px;}
+  .group { width: 98vw; max-width: 320px;}
+  .logo-container img { max-width: 180px;}
+  h1 { font-size: 1.3rem;}
+  #last-number { font-size: 2rem;}
+  .div-tipo-sorteio { max-width: 98vw; padding: 12px 4px;}
+  .tipo-sorteio-options { gap: 8px;}
+  .tipo-radio { font-size: 0.98rem; padding: 6px 8px;}
+}
+@media (max-width: 500px) {
+  .cards-container {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .form-container form {
+    gap: 6px !important;
+  }
+  h1, h2 {
+    font-size: 1.1rem !important;
+  }
+  .form-container {
+    padding: 18px 8px !important;
+  }
+}
+
+/* =========================
+   Keyframes
+   ========================= */
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes popCard {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+@keyframes fadeInCards {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+@keyframes fadeInNaBoa {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+@keyframes winner-flash {
+  0%   { background-color: #fffbe8; transform: scale(1); }
+  100% { background-color: #ffe1b3; transform: scale(1.05); }
+}
+@keyframes fadeInLogo {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.8);}
+  60% { transform: scale(1.05);}
+  80% { transform: scale(0.98);}
+  100% { transform: scale(1);}
+}
+@keyframes pulseBtn {
+  from { box-shadow: 0 2px 8px rgba(21,95,155,0.10);}
+  to { box-shadow: 0 4px 16px rgba(252,122,13,0.18);}
+}
+@keyframes shakeBtn {
+  0% { transform: translateX(0);}
+  80% { transform: translateX(0);}
+  85% { transform: translateX(-2px);}
+  90% { transform: translateX(2px);}
+  95% { transform: translateX(-2px);}
+  100% { transform: translateX(0);}
+}
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-40px) rotateZ(0deg) scale(1);
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotateZ(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+@keyframes fadeInTipo {
+  0% { opacity: 0; transform: scale(0.92) translateY(-20px);}
+  60% { opacity: 0.7; transform: scale(1.04) translateY(8px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}

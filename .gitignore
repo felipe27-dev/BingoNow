@@ -1,0 +1,11 @@
+# Ambiente virtual Python
+.venv/
+
+# Arquivos compilados e cache do Python
+__pycache__/
+
+# Pasta de anotações ou comentários
+.comments/
+
+# Banco de dados SQLite
+bingo.db

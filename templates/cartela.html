@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+  <style>
+    /* Página “enxuta” — tamanho justo ao conteúdo */
+    @page {
+      size: 470px 400px;  /* ajuste fino: largura × altura */
+      margin: 0;
+    }
+    body {
+      margin: 0;
+      padding: 10px;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      background: #f7f7f7;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 16px;
+      width: 100%;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+      letter-spacing: 4px;
+    }
+    .header .info {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      table-layout: fixed;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      width: 20%;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 18px;
+    }
+    th {
+      background: #ececec;
+      color: #333;
+      font-weight: 600;
+    }
+    .free {
+      background: #ffd54f;
+      font-weight: 700;
+    }
+  </style>
+  <title>Cartela {{ cartela_id }}</title>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <h1>B I N G O</h1>
+      <div class="info">
+        Cartela #{{ cartela_id }}<br>
+        Comprador: {{ comprador_nome }}
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>B</th><th>I</th><th>N</th><th>G</th><th>O</th></tr>
+      </thead>
+      <tbody>
+        {% for row in cartela %}
+        <tr>
+          {% for num in row %}
+            {% if num == 'BINGO' %}
+              <td>
+                <img src="/static/images/LOGO_BINGONOW-removebg-preview.png" alt="BINGO" style="width:40px;height:auto;">
+              </td>
+            {% else %}
+              <td>{{ num }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

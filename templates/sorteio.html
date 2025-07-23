@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorteio do Bingo</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='images/LOGO_BINGONOW-lateral-removebg-preview.png') }}" alt="Logo Bingo Now">
+  </div>
+  <div class="controls">
+    <button id="btn-start" class="active">Iniciar Sorteio</button>
+    <button id="btn-next" class="desactive">Próximo Número</button>
+    <button id="btn-stop" class="desactive">Parar Sorteio</button>
+  </div>
+  <div class="div-tipo-sorteio">
+    <h3>Tipo de Sorteio:</h3>
+    <div class="tipo-sorteio-options">
+      <div style="position:relative; display:inline-block; width:200px;">
+        <select id="tipo-sorteio-select" name="tipo-sorteio" class="custom-select" style="width:100%;">
+          <option value="linha/coluna" selected>Linha/Coluna</option>
+          <option value="bola">Bola</option>
+          <option value="cartela">Cartela</option>
+        </select>
+        <span style="
+          pointer-events:none;
+          position:absolute;
+          right:18px;
+          top:50%;
+          transform:translateY(-50%);
+          width:0;
+          height:0;
+          border-left:7px solid transparent;
+          border-right:7px solid transparent;
+          border-top:7px solid var(--accent);
+        "></span>
+      </div>
+    </div>
+  </div>
+  <div id="last-number"></div>
+  <div id="na-boa-box" style="display:none;" class="na-boa-box">
+    <h3>Cartelas na Boa </h3>
+    <p>Aguardando sorteio...</p>
+  </div>
+  <div id="winner-box" class="winner-box"></div>
+  <!-- Modal Informações do Comprador -->
+  <div id="comprador-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(21,95,155,0.18); z-index:10000; justify-content:center; align-items:center;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);"></div>
+    <div style="
+      background: linear-gradient(90deg, #e3f2fd 0%, #fffbe8 100%);
+      border: 3px solid var(--primary);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(21,95,155,0.18);
+      max-width: 420px;
+      width: 90vw;
+      padding: 32px 24px;
+      color: var(--primary-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    ">
+      <h3 style="
+        font-size: 1.3rem;
+        color: var(--accent);
+        font-weight: bold;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+        background: var(--accent);
+        color: var(--white);
+        border-radius: 6px;
+        padding: 6px 0;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(252,122,13,0.08);
+      ">Informações do Comprador</h3>
+      <div id="comprador-info" style="width:100%; text-align:left;">
+        <p><strong>Nome:</strong> <span id="comprador-nome">---</span></p>
+        <p><strong>Endereço:</strong> <span id="comprador-endereco">---</span></p>
+        <p><strong>Telefone:</strong> <span id="comprador-telefone">---</span></p>
+        <p><strong>Cartela:</strong> <span id="comprador-cartela">---</span></p>
+      </div>
+      <button onclick="document.getElementById('comprador-modal').style.display='none';" style="
+        margin-top: 22px;
+        background: var(--accent);
+        color: var(--white);
+        font-size: 1.08rem;
+        padding: 12px 32px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(21,95,155,0.10);
+        transition: background .2s, transform .1s;
+        animation: pulseBtn 1.5s infinite alternate;
+        outline: none;
+      ">Fechar</button>
+    </div>
+  </div>
+  </div>
+  <div class="drawn-groups">
+    {% for letter in ['B','I','N','G','O'] %}
+      <div class="group" id="group-{{letter}}">
+        <h3>{{letter}}</h3>
+        <div class="nums"></div>
+      </div>
+    {% endfor %}
+  </div>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='draw.js') }}"></script>
+</body>
+</html>

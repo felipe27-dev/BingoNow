@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Bingo</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="/static/main.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='images/LOGO_BINGONOW-lateral-removebg-preview.png') }}" alt="Logo Bingo Now">
+  </div>
+  <div class="form-container">
+    <form action="/criar_cartela" method="post">
+      <input type="text" name="nome" placeholder="Nome do Comprador" required>
+      <input type="text" name="endereco" placeholder="Endereço" required>
+      <input type="text" name="telefone" placeholder="Telefone" required>
+      <button type="submit">Gerar Cartela</button>
+    </form>
+  </div>
+  <div style="display: flex; justify-content: center; gap: 16px;">
+    <button id="btn-remover-todas-cartelas" onclick="removerTodasCartelas()" style="display: flex; align-items: center; gap: 10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <path fill="#fff" d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9ZM7 6H17V19H7V6ZM9 8V17H11V8H9ZM13 8V17H15V8H13Z"/>
+      </svg>
+      Remover Todas as Cartelas
+    </button>
+    <button id="btn-imprimir-todas-cartelas" style="display: flex; align-items: center; gap: 10px;">
+      <!-- Ícone de impressão (impressora) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24">
+        <path fill="#fff" d="M6 8V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4h2a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v3a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h2zm2-4h8v4H8V4zm8 16v-5H8v5h8zm-10-7v7h2v-3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h2v-7H4z"/>
+        <rect x="9" y="13" width="6" height="2" fill="#fff"/>
+      </svg>
+      <a href="/gerar_pdf_todas_cartelas" style="color: var(--white); text-decoration: none;">Imprimir Todas as Cartelas</a>
+    </button>
+  </div>
+  <h2>Cartelas Existentes</h2>
+  <div class="cards-container">
+    {% for c in cartelas %}
+      <div class="card">
+        <div class="card-header">#{{ c.id }}</div>
+        <div class="card-body">
+          <div><strong>Comprador:</strong> {{ c.comprador.nome }}</div>
+        </div>
+        <div class="card-actions">
+          <a href="/view/{{ c.id }}" target="_blank">Visualizar</a>
+          <a href="/download/{{ c.id }}">Baixar PDF</a>
+          <a href="#" class="print-btn" data-id="{{ c.id }}">Imprimir</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div style="text-align:center; margin:20px 0;">
+    <a href="/draw" target="_blank" class="btn-draw">Fazer Sorteio</a>
+  </div>
+</body>
+</html>
