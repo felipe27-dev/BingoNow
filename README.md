@@ -1,4 +1,5 @@
 # 🎱 Projeto BingoNow
+<img src="static/images/LOGO_BINGONOW-removebg-preview.png" width="250px" height="250px">
 
 Sistema web para sorteio e controle de cartelas de bingo, com geração automática de PDF, sorteio em tempo real via Socket.IO, e interface amigável para operadores e participantes.
 
